@@ -29,7 +29,8 @@
         'sale_order_type',
         # agregamos esta depenencia para permitir reembolsar las devoluciones
         # y para no tener que hacer modulos puente
-        'sale_stock_ux',
+        # Remove dependency to make the module much more independent
+        
     ],
     'demo': [
         'demo/res_partner_demo.xml',
