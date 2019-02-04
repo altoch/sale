@@ -10,7 +10,7 @@ class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
 
     # .invoice_policy (no hacemos depends en el .invoice_policy para que si
-    # lo cambiamos mas adelante no reprosese todas las ventas)
+    # lo cambiamos mas adelante no reprocese todas las ventas)
     @api.depends('order_id.type_id')
     def _get_to_invoice_qty(self):
         """
@@ -24,8 +24,7 @@ class SaleOrderLine(models.Model):
             type_policy = line.order_id.type_id.invoice_policy
             if type_policy in ['order', 'prepaid']:
                 line.qty_to_invoice = (
-                    line.product_uom_qty - line.qty_returned -
-                    line.qty_invoiced)
+                    line.product_uom_qty - line.qty_invoiced)
             elif type_policy == 'delivery':
                 line.qty_to_invoice = (
                     line.qty_delivered - line.qty_invoiced)
